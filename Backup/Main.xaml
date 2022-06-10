@@ -1,0 +1,35 @@
+﻿<Window x:Class="Grep.Main"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Grep" Height="649" Width="1165" Name="MainWindow" Loaded="MainWindow_Loaded" Closing="MainWindow_Closing" Icon="/Grep;component/Gnu.ico">
+    <Grid >
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,9,0,0" Name="label1" VerticalAlignment="Top" Width="84">Search String</Label>
+        <TextBox Height="23" Margin="102,14,174,0" Name="SearchString" VerticalAlignment="Top" KeyDown="SearchString_KeyDown" />
+        <ListView Margin="12,109,12,38" Name="Results" FontFamily="Courier New" Background="Black" Foreground="LightGray" FontWeight="Bold" SelectionChanged="Results_SelectionChanged" KeyDown="Results_KeyDown" MouseDoubleClick="Results_MouseDoubleClick" SelectionMode="Extended">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Width="100" Header="Path" DisplayMemberBinding="{Binding Path}"/>
+                    <GridViewColumn Width="100" Header="Line Number" DisplayMemberBinding="{Binding LineNumber}"/>
+                    <GridViewColumn Width="100" Header="Text" DisplayMemberBinding="{Binding Text}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <StatusBar Height="23" Name="StatusBar" VerticalAlignment="Bottom">
+            <StatusBarItem Name="Status" />
+        </StatusBar>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,14,93,0" Name="Search" VerticalAlignment="Top" Width="75" Click="Search_Click">Search</Button>
+        <TextBox Height="23" Margin="102,43,12,0" Name="SearchPath" VerticalAlignment="Top" IsEnabled="False" />
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,38,0,0" Name="SearchPathLabel" VerticalAlignment="Top" Width="84" Foreground="Blue" Cursor="Hand" MouseUp="SearchPathLabel_MouseUp"><Underline>Search Path</Underline></Label>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,80,12,0" Name="SaveResults" VerticalAlignment="Top" Width="75" Click="SaveResults_Click">Save</Button>
+        <Label Height="28" HorizontalAlignment="Left" Margin="12,67,0,0" Name="label2" VerticalAlignment="Top" Width="93">Remove Items</Label>
+        <TextBox Height="23" Margin="102,72,0,0" Name="RemovePattern" VerticalAlignment="Top" HorizontalAlignment="Left" Width="260" />
+        <Button Height="23" Margin="504,72,454,0" HorizontalAlignment="Left" Width="130
+                " Name="RemoveItems" VerticalAlignment="Top" Click="RemoveItems_Click">Remove</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,14,12,0" Name="Intersect" VerticalAlignment="Top" Width="75" Click="Intersect_Click">Intersect</Button>
+        <Button Height="23" HorizontalAlignment="Right" Margin="0,80,93,0" Name="Copy" VerticalAlignment="Top" Width="75" Click="Copy_Click">Copy</Button>
+        <ComboBox Height="23" HorizontalAlignment="Left" Margin="368,72,0,0" Name="RemoveType" VerticalAlignment="Top" Width="120" SelectedIndex="0">
+            <ComboBoxItem Name="StartsWith">Starts With</ComboBoxItem>
+            <ComboBoxItem Name="Contains">Contains</ComboBoxItem>
+        </ComboBox>
+    </Grid>
+</Window>
